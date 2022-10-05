@@ -24,10 +24,10 @@ def update_dns(ip, port):
     
     endpointSRV = recordSRV["endpoint"] + '/dns/editByNameType/' + os.getenv("DOMAIN") + "/SRV/_minecraft._tcp." + os.getenv("SUBDOMAIN")
 
-    print(recordA)
-    print(recordSRV)
-    print(endpointA)
-    print(endpointSRV)
+    # print(recordA)
+    # print(recordSRV)
+    # print(endpointA)
+    # print(endpointSRV)
 
     resultA = json.loads(requests.post(endpointA, data = json.dumps(recordA)).text)
     print("A   - " + resultA["status"])
@@ -35,8 +35,8 @@ def update_dns(ip, port):
     resultSRV = json.loads(requests.post(endpointSRV, data = json.dumps(recordSRV)).text)
     print("SRV - " + resultSRV["status"])
 
-    print(resultA)
-    print(resultSRV)
+    # print(resultA)
+    # print(resultSRV)
 
     
     return
@@ -65,9 +65,11 @@ async def on_message(message):
         host = ip_port[:i]
         ip = socket.gethostbyname(host)
 
-        await message.channel.send(ip + ":" + port + " (" + host + ")")
+        await message.channel.send("The new IP is: " + ip + ":" + port + " (" + host + ")\nThe DNS server is being updated...")
 
         update_dns(ip, port)
+
+        await message.channel.send("Done! To update the IP automatically in your client, use `mc.geese.dev`")
 
     return
 
