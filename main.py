@@ -1,6 +1,8 @@
 import os
 import discord
 
+print("I'm working")
+
 class MyClient(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
