@@ -9,4 +9,4 @@ class MyClient(discord.Client):
         print(f'Message from {message.author}: {message.content}')
 
 client = MyClient()
-client.run(os.getenv('DISCORD_TOKEN))
+client.run(os.getenv('DISCORD_TOKEN'))
