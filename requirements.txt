@@ -1,2 +1,2 @@
-py-cord
+py-cord>=2.2.0
 python-dotenv
