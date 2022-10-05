@@ -48,9 +48,8 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    print(message.content)
     if message.author.display_name == str(os.getenv('NGROK_PROVIDER')):
-        ip_port = re.search(r"is *([^\n\r ]*)", message.content).group(1)
+        ip_port = re.search(r"is `*([^\n\r ]*)", message.content).group(1)[:-1]
 
         for i in range(len(ip_port) - 1, 0, -1):
             if ip_port[i] == ":":
